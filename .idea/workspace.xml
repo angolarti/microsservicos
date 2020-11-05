@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ff16c73-a5c9-4072-ba57-d854c366d0a0" name="Default Changelist" comment="" />
+    <list default="true" id="9ff16c73-a5c9-4072-ba57-d854c366d0a0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/checkout.go" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/checkout.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagamento/pagamento.go" beforeDir="false" afterPath="$PROJECT_DIR$/pagamento/pagamento.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,13 +17,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Go File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1jpLK4uGA6dh1pAwMjz2HGh24YH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,14 +38,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
-    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="true" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pagamento" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pagamento" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml.rebbit: Compose Deployment">
     <configuration name="go build checkout.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="microsservicos" />
       <working_directory value="$PROJECT_DIR$" />
@@ -44,8 +59,23 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yml.rebbit: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="rebbit" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yml.rebbit: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.rebbit: Compose Deployment" />
         <item itemvalue="Go Build.go build checkout.go" />
       </list>
     </recent_temporary>
@@ -68,10 +98,10 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="761" y="1267" key="#GOPATH" timestamp="1604496626748">
+    <state x="761" y="1267" width="400" height="676" key="#GOPATH" timestamp="1604559112154">
       <screen x="1" y="1080" width="1920" height="1080" />
     </state>
-    <state x="761" y="1267" key="#GOPATH/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604496626748" />
+    <state x="761" y="1267" width="400" height="676" key="#GOPATH/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604559112154" />
     <state x="761" y="1539" key="#GOROOT" timestamp="1604496494636">
       <screen x="1" y="1080" width="1920" height="1080" />
     </state>
@@ -88,10 +118,14 @@
       <screen x="1" y="1080" width="1920" height="1080" />
     </state>
     <state x="425" y="1264" key="#com.intellij.execution.impl.EditConfigurationsDialog/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604496957075" />
-    <state x="749" y="1364" key="FileChooserDialogImpl" timestamp="1604496623438">
+    <state x="684" y="1405" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604558238242">
       <screen x="1" y="1080" width="1920" height="1080" />
     </state>
-    <state x="749" y="1364" key="FileChooserDialogImpl/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604496623438" />
+    <state x="684" y="1405" key="#com.intellij.fileTypes.FileTypeChooser/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604558238242" />
+    <state x="749" y="1364" width="424" height="483" key="FileChooserDialogImpl" timestamp="1604559098540">
+      <screen x="1" y="1080" width="1920" height="1080" />
+    </state>
+    <state x="749" y="1364" width="424" height="483" key="FileChooserDialogImpl/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604559098540" />
     <state width="1872" height="295" key="GridCell.Tab.0.bottom" timestamp="1604518521255">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -112,10 +146,14 @@
     </state>
     <state width="1872" height="295" key="GridCell.Tab.0.right/1.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604518521254" />
     <state width="1872" height="295" key="GridCell.Tab.0.right/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604497821877" />
-    <state x="461" y="161" key="SettingsEditor" timestamp="1604519026141">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="462" y="1241" key="SettingsEditor" timestamp="1604558454676">
+      <screen x="1" y="1080" width="1920" height="1080" />
     </state>
     <state x="461" y="161" key="SettingsEditor/1.1080.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604519026141" />
-    <state x="462" y="1241" key="SettingsEditor/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604496578652" />
+    <state x="462" y="1241" key="SettingsEditor/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604558454676" />
+    <state x="624" y="1319" width="672" height="678" key="search.everywhere.popup" timestamp="1604569064324">
+      <screen x="1" y="1080" width="1920" height="1080" />
+    </state>
+    <state x="624" y="1319" width="672" height="678" key="search.everywhere.popup/1.1080.1920.1080/0.0.1920.1080@1.1080.1920.1080" timestamp="1604569064324" />
   </component>
 </project>

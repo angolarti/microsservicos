@@ -2,16 +2,27 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/joho/godotenv"
+	"github.com/wesleywillians/go-rabbitmq/queue"
 	"html/template"
-	"io/ioutil"
 	"log"
 	"net/http"
-	"net/url"
-	"github.com/hashicorp/go-retryablehttp"
 )
+
+type Order struct {
+	Coupon string
+	CccNumber string
+}
 
 type Result struct {
 	Status string
+}
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env")
+	}
 }
 
 func main() {
@@ -29,36 +40,28 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 func process(w http.ResponseWriter, r *http.Request) {
 
-	result := makeHttpCall("http://127.0.0.1:9091", r.FormValue("coupon"), r.FormValue("cc-number"))
-	tmpt := template.Must(template.ParseFiles("templates/home.html"))
-	tmpt.Execute(w, result)
-}
+	coupon := r.PostFormValue("coupon")
+	ccNumber := r.PostFormValue("cc-number")
 
-func makeHttpCall(urlMicroservice string, coupon string, ccNumber string) Result {
-
-	values := url.Values{}
-	values.Add("coupon", coupon)
-	values.Add("ccNumber", ccNumber)
-
-	retryClient := retryablehttp.NewClient()
-	retryClient.RetryMax = 5
-
-	res, err := retryClient.PostForm(urlMicroservice, values)
-	if err != nil {
-		// log.Fatal("Microsservice pagamento out")
-		result := Result{Status: "Servidor fora do ar!"}
-		return result
+	order := Order{
+		Coupon: coupon,
+		CccNumber: ccNumber,
 	}
 
-	defer res.Body.Close() // so é executado quando todo programa terminar de executar
-	data, err := ioutil.ReadAll(res.Body)
+	jsonOrder, err := json.Marshal(order)
 	if err != nil {
-		log.Fatal("Error processing result")
+		log.Fatal("Error parsing to json")
+	}
+	// result := makeHttpCall("http://127.0.0.1:9091", r.FormValue("coupon"), r.FormValue("cc-number"))
+	rabbitMQ := queue.NewRabbitMQ()
+	ch := rabbitMQ.Connect()
+	defer ch.Close()
+
+	err = rabbitMQ.Notify(string(jsonOrder), "application/json", "orders_ex", "")
+	if err != nil {
+		log.Fatal("Error send message to the queue")
 	}
 
-	result := Result{}
-	json.Unmarshal(data, &result)
-
-	return result
-
+	tmpt := template.Must(template.ParseFiles("templates/process.html"))
+	tmpt.Execute(w, "")
 }

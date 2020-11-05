@@ -2,57 +2,81 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"github.com/joho/godotenv"
+	uuid "github.com/satori/go.uuid"
+	"github.com/streadway/amqp"
+	"github.com/wesleywillians/go-rabbitmq/queue"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
-	"github.com/hashicorp/go-retryablehttp"
 )
+
+type Order struct {
+	ID uuid.UUID
+	Coupon string
+	CcNumber string
+}
 
 type Result struct {
 	Status string
 }
 
-func main() {
-	http.HandleFunc("/", home)
-	http.ListenAndServe(":9091", nil)
+func NewOrder() Order {
+	return Order{ID: uuid.NewV4()}
 }
 
-func home(w http.ResponseWriter, r *http.Request) {
-	coupon := r.PostFormValue("coupon")
-	ccNumber := r.PostFormValue("ccNumber")
+const (
+	InvalidCoupon = "invalid"
+	ValidCoupon = "valid"
+	ConnectionError = "connection error"
+)
 
-	resultCoupon := makeHttpCall("http://127.0.0.1:9092", coupon)
-
-	result := Result{Status: "declined"}
-
-	if ccNumber == "1" &&  resultCoupon.Status == "valid" {
-		result.Status = "approved" + ": Boas acabaste de ganhar mais um coupon"
-	}
-
-	if resultCoupon.Status == "invalid" {
-		result.Status = "invalid coupon"
-	}
-
-	jsonData, err := json.Marshal(result)
+func init() {
+	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error processing json")
+		log.Fatal("Error loading .env file")
 	}
+}
 
-	fmt.Fprintf(w, string(jsonData))
+func main() {
+	messageChannel := make(chan amqp.Delivery)
+
+	rabbitmq := queue.NewRabbitMQ()
+	ch := rabbitmq.Connect()
+	defer ch.Close()
+	rabbitmq.Consume(messageChannel)
+
+	for msg := range messageChannel {
+		process(msg)
+	}
+}
+
+func process(msg amqp.Delivery) {
+
+	order := NewOrder()
+	json.Unmarshal(msg.Body, &order)
+
+	resultCoupon := makeHttpCall("http://127.0.0.1:9092", order.Coupon)
+
+	switch resultCoupon.Status {
+	case InvalidCoupon:
+		log.Println("Order: ",order.ID, ": invalid coupon")
+	case ConnectionError:
+		msg.Reject(false)
+		log.Println("Order: ",order.ID, ": could not process!")
+	case ValidCoupon:
+		log.Println("Order: ",order.ID, ": processed")
+	}
 }
 
 func makeHttpCall(urlMicroservice string, coupon string) Result {
 	values := url.Values{}
 	values.Add("coupon", coupon)
 
-	retryClient := retryablehttp.NewClient()
-	retryClient.RetryMax = 5
-
-	res, err := retryClient.PostForm(urlMicroservice, values) // http.PostForm(urlMicroservice, values)
+	res, err := http.PostForm(urlMicroservice, values) // http.PostForm(urlMicroservice, values)
 	if err != nil {
-		result := Result{Status: "Servidor fora do ar!"}
+		result := Result{Status: ConnectionError}
 		return result
 	}
 
