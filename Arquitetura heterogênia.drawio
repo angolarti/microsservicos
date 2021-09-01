@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-09-01T14:06:19.594Z" agent="5.0 (X11)" etag="wMWUwv0__SOPjGW7km_4" version="15.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-01T14:07:02.934Z" agent="5.0 (X11)" etag="uZwtZu6PHB2CsRMlRThT" version="15.0.4" type="github">
   <diagram id="dzHz6PURdMUeBRdcUXWA" name="Page-1">
     <mxGraphModel dx="1673" dy="931" grid="1" gridSize="9" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" background="#ffffff" math="0" shadow="1">
       <root>
@@ -55,20 +55,6 @@
         </mxCell>
         <mxCell id="CGGLK1w7JqWtkr7omzfc-26" value="http://www.sad.co.ao" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
           <mxGeometry x="1429" y="1094" width="126" height="18" as="geometry" />
-        </mxCell>
-        <mxCell id="CGGLK1w7JqWtkr7omzfc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;align=center;" parent="1" target="CGGLK1w7JqWtkr7omzfc-1" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1851" y="1078" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="1851" y="1003" />
-              <mxPoint x="1742" y="1003" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="CGGLK1w7JqWtkr7omzfc-33" value="&lt;font style=&quot;font-size: 13px&quot;&gt;&lt;b&gt;NGINX&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="CGGLK1w7JqWtkr7omzfc-31" vertex="1" connectable="0">
-          <mxGeometry x="0.4739" y="-4" relative="1" as="geometry">
-            <mxPoint x="-96" y="8" as="offset" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="CGGLK1w7JqWtkr7omzfc-32" value="Service Discovery" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" parent="1" vertex="1">
           <mxGeometry x="1882" y="1059" width="110" height="20" as="geometry" />
